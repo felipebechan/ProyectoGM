@@ -46,10 +46,9 @@ A continuación, se detalla cómo se cumplieron los requisitos de diseño:
 
 ## GM1.3: Diagrama UML
 
-(Se debe insertar aquí la imagen del diagrama de clases UML. El archivo de imagen debe subirse al repositorio).
 
 ![Diagrama UML](uml.png)
 
 ## GM1.7: Control de Versiones
 
-El código fuente del proyecto está versionado con Git. El historial de commits se encuentra en este repositorio de GitHub y sigue una estructura lógica, separando la implementación de la base, la refactorización a herencia/interfaces y la adición de nuevas funcionalidades en commits atómicos.
+El código fuente del proyecto está versionado con Git. El historial de commits se encuentra en este repositorio de GitHub y sigue una estructura lógica, separando la implementación de la base, la refactorización a herencia/interfaces y la adición de nuevas funcionalidades en commits.
