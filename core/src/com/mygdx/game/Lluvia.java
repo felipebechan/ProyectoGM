@@ -1,4 +1,4 @@
-package com.mygdx.game; // Adaptación necesaria
+package com.mygdx.game; // adaptacion lol
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -56,7 +56,7 @@ public class Lluvia {
 	  
 	   
 	   // revisar si las gotas cayeron al suelo o chocaron con el tarro
-       // ADAPTACIÓN CRÍTICA: Bucle hacia atrás para que el juego funcione correctamente al eliminar gotas
+    
 	   for (int i = rainDropsPos.size - 1; i >= 0; i-- ) {
 		  Rectangle raindrop = rainDropsPos.get(i);
 	      raindrop.y -= 300 * Gdx.graphics.getDeltaTime();
@@ -66,7 +66,7 @@ public class Lluvia {
 	    	  rainDropsType.removeIndex(i);
 	      }
 	      if(raindrop.overlaps(tarro.getArea())) { //la gota choca con el tarro
-	    	if(rainDropsType.get(i)==1) { // gota dañina
+	    	if(rainDropsType.get(i)==1) { 
 	    	  tarro.dañar();
 	    	  rainDropsPos.removeIndex(i);
 	          rainDropsType.removeIndex(i);

@@ -1,13 +1,11 @@
 package com.mygdx.game;
-// adaptacion
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-// adaptacion
+// esta es la class principal del juego, se encarga de cambiar las pantallas
 public class ProyectoJuegoLluvia extends Game {
-
 
 	private SpriteBatch batch;
 	private BitmapFont font;
@@ -15,12 +13,12 @@ public class ProyectoJuegoLluvia extends Game {
 
 	public void create() {
 		batch = new SpriteBatch();
-		font = new BitmapFont(); 
+		font = new BitmapFont(); // use libGDX's default Arial font
 		this.setScreen(new MainMenuScreen(this));
 	}
 
 	public void render() {
-		super.render(); 
+		super.render();
 	}
 
 	public void dispose() {
@@ -28,7 +26,6 @@ public class ProyectoJuegoLluvia extends Game {
 		font.dispose();
 	}
 
-	//  contexto
 	public SpriteBatch getBatch() {
 		return batch;
 	}

@@ -1,4 +1,4 @@
-package com.mygdx.game; //adaptacion
+package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -7,16 +7,15 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-
 public class PausaScreen implements Screen {
 
-	private final ProyectoJuegoLluvia game; // adaptacion
+	private final ProyectoJuegoLluvia game;
 	private GameScreen juego;
 	private SpriteBatch batch;	   
 	private BitmapFont font;
 	private OrthographicCamera camera;
 
-	public PausaScreen (final ProyectoJuegoLluvia game, GameScreen juego) { // ADAPTACIÓN
+	public PausaScreen (final ProyectoJuegoLluvia game, GameScreen juego) {
 		this.game = game;
         this.juego = juego;
         this.batch = game.getBatch();
@@ -46,36 +45,30 @@ public class PausaScreen implements Screen {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
 	}
 }
