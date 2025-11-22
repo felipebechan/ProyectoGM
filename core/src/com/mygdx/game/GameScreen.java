@@ -2,14 +2,12 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class GameScreen implements Screen {
@@ -41,31 +39,14 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
 
-        try {
-            fondo = new Texture(Gdx.files.internal("fondo.png"));
-            Texture cestaImg = new Texture(Gdx.files.internal("cesta.png"));
-            Texture manzanaImg = new Texture(Gdx.files.internal("manzana.png"));
-            Texture sandiaImg = new Texture(Gdx.files.internal("sandia.png"));
-            Texture bombaImg = new Texture(Gdx.files.internal("bomba.png"));
-            Texture estrellaImg = new Texture(Gdx.files.internal("estrella.png"));
-            Texture giroImg = new Texture(Gdx.files.internal("powerup_giro.png")); 
-            Texture tamanioImg = new Texture(Gdx.files.internal("powerup_tamanio.png")); 
-            Texture velocidadImg = new Texture(Gdx.files.internal("powerup_velocidad.png"));
+        // usamos el singleton para obtener todos los recursos
+        GestorDeRecursos recursos = GestorDeRecursos.getInstancia();
+        fondo = recursos.getFondo();
+        sonidoAlerta = recursos.getSonidoAlerta();
+        sonidoGiro = recursos.getSonidoGiro();
 
-            Sound hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.ogg"));
-            Sound dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
-            Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
-
-            sonidoAlerta = Gdx.audio.newSound(Gdx.files.internal("alerta.wav"));
-            sonidoGiro = Gdx.audio.newSound(Gdx.files.internal("giro.wav"));
-
-            tarro = new Tarro(cestaImg, hurtSound);
-            controlador = new ControladorDeObjetos(rainMusic, manzanaImg, sandiaImg, bombaImg, estrellaImg, giroImg, tamanioImg, velocidadImg, dropSound);
-
-        } catch (GdxRuntimeException e) {
-            Gdx.app.error("AssetLoader", "falto un archivo en la carpeta assets!!", e);
-            Gdx.app.exit();
-        }
+        tarro = new Tarro(recursos.getCestaImg(), recursos.getHurtSound());
+        controlador = new ControladorDeObjetos(recursos.getRainMusic());
 
         tarro.crear();
         controlador.iniciar();
@@ -91,6 +72,7 @@ public class GameScreen implements Screen {
             if (tiempoPowerUp <= 0) {
                 estadoActual = EstadoJuego.NORMAL;
                 tarro.reposicionarYRotar(EstadoJuego.NORMAL);
+                controlador.setEstrategia(EstadoJuego.NORMAL); // volvemos a la estrategia normal
             }
         }
 
@@ -157,9 +139,7 @@ public class GameScreen implements Screen {
     public void dispose() {
         tarro.destruir();
         controlador.destruir();
-        sonidoAlerta.dispose();
-        sonidoGiro.dispose();
-        if (fondo != null) fondo.dispose();
+        // no disposear fondo ni sonidos, el singleton lo maneja
     }
     
     @Override

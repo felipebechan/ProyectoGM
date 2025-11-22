@@ -7,15 +7,16 @@ project.ext.assetsDir = new File("../assets")
 
 import org.gradle.internal.os.OperatingSystem
 
-task run(dependsOn: classes, type: JavaExec) {
-    main = project.mainClassName
+tasks.register('run', JavaExec) {
+    group = 'application'
+    description = 'Run desktop launcher'
     classpath = sourceSets.main.runtimeClasspath
+    mainClass.set(project.ext.mainClassName)   // <- API moderna
     standardInput = System.in
-    workingDir = project.assetsDir
+    workingDir = project.ext.assetsDir
     ignoreExitValue = true
 
-    if (OperatingSystem.current() == OperatingSystem.MAC_OS) {
-        // Required to run on macOS
+    if (OperatingSystem.current().isMacOsX()) { // <- método actual
         jvmArgs += "-XstartOnFirstThread"
     }
 }

@@ -6,39 +6,40 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 // esta es la class principal del juego, se encarga de cambiar las pantallas
 public class ProyectoJuegoLluvia extends Game {
-
-	private SpriteBatch batch;
-	private BitmapFont font;
-	private int higherScore;
-
-	public void create() {
-		batch = new SpriteBatch();
-		font = new BitmapFont(); // use libGDX's default Arial font
-		this.setScreen(new MainMenuScreen(this));
-	}
-
-	public void render() {
-		super.render();
-	}
-
-	public void dispose() {
-		batch.dispose();
-		font.dispose();
-	}
-
-	public SpriteBatch getBatch() {
-		return batch;
-	}
-
-	public BitmapFont getFont() {
-		return font;
-	}
-
-	public int getHigherScore() {
-		return higherScore;
-	}
-
-	public void setHigherScore(int higherScore) {
-		this.higherScore = higherScore;
-	}
+    private SpriteBatch batch;
+    private BitmapFont font;
+    private int higherScore;
+    
+    public void create() {
+        batch = new SpriteBatch();
+        font = new BitmapFont(); // use libGDX's default Arial font
+        this.setScreen(new MainMenuScreen(this));
+    }
+    
+    public void render() {
+        super.render();
+    }
+    
+    public void dispose() {
+        batch.dispose();
+        font.dispose();
+        // liberamos el singleton al cerrar el juego
+        GestorDeRecursos.getInstancia().dispose();
+    }
+    
+    public SpriteBatch getBatch() {
+        return batch;
+    }
+    
+    public BitmapFont getFont() {
+        return font;
+    }
+    
+    public int getHigherScore() {
+        return higherScore;
+    }
+    
+    public void setHigherScore(int higherScore) {
+        this.higherScore = higherScore;
+    }
 }
