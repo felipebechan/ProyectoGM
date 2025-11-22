@@ -95,7 +95,7 @@ Extras:
 
 # GM1.3 – Diagrama UML
 
-Ver archivo: uml_final.png
+![UML final](uml_final.png)
 
 -------------------------------------------------------------------
 
@@ -319,7 +319,7 @@ Requisito cumplido: Más de 3 commits adicionales a la entrega de avance.
 
 # Diagrama UML – Entrega Final
 
-Ver archivo: uml_final.png
+![UML final](uml_final.png)
 
 El diagrama muestra:
 - Patrón Singleton en GestorDeRecursos
