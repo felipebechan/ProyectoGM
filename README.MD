@@ -95,7 +95,7 @@ Extras:
 
 # GM1.3 – Diagrama UML
 
-Ver archivo: uml.png
+Ver archivo: uml_final.png
 
 -------------------------------------------------------------------
 
